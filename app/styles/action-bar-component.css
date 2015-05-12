@@ -1,0 +1,35 @@
+/*****HEADER*****/
+.row-header > .ember-view {
+  height: 100%;
+  position: relative;
+}
+/****************/
+
+/***BUTTON BAR***/
+.btn-group-justified {
+  height: 35px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.btn-group-justified > a:hover  {
+  text-decoration: none;
+}
+
+.btn-group-justified > .btn, .btn-group-justified > a > .btn {
+  width: 8%;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  min-width: 120px;
+  font-family: 'BenchNine', sans-serif;
+  background-color: #F4F4F4;
+  border-color: #F4F4F4;
+}
+
+.btn-group-justified > .btn:hover, .btn-group-justified > a > .btn:hover {
+  background-color: #5300A6;
+  color: white;
+  font-size: 15px;
+}
+/****************/

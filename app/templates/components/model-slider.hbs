@@ -1,0 +1,9 @@
+<button class="slider-button" id="slider-button-left" {{action "slideLeft"}}>
+</button>
+{{#each displayModel as |vacation|}}
+  <button class="slider-object {{sliderDimensions}}" id="slider-button-{{vacation.id}}" {{action "sliderButtonFocus" vacation.id}}>
+    {{vacation.name}}
+  </button>
+{{/each}}
+<button class="slider-button" id="slider-button-right" {{action "slideRight"}}>
+</button>

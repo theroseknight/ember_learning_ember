@@ -1,0 +1,78 @@
+/*************************************LANDING PAGE *********************************************************/
+/* Setting up the core framework of the page to be responsive*/
+html, body, body > .ember-view, .ember-view > .container, .container > .ember-view, .ember-view > .ember-view {
+  height: 100%;
+  width: 100%;
+  background-color: #F4F4F4;
+}
+
+.container {
+  padding: 0px;
+}
+
+/*****HEADER*****/
+.row-header {
+  height: 10%;
+  width: 100%;
+  margin: 0px;
+}
+
+/****************/
+
+/*****CONTENT****/
+.row-content {
+  height: 60%;
+  width: 100%;
+  margin: 0px;
+}
+
+.row-content > .col-xs-8, .row-content > .col-xs-2 {
+  height: 100%;
+  border-color: #F4F4F4;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0px;
+}
+
+.row-content > .col-xs-8 {
+  width: 64.66666667%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 2%;
+}
+
+.row-content > .col-xs-2 {
+  width: 13.666666667%
+}
+
+.row-content > #left-landing-column {
+  margin-left: 2%;
+  margin-right: 1%;
+  margin-bottom: 2%;
+}
+
+.row-content > #right-landing-column {
+  margin-left: 1%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+.row-content > .col-xs-8:hover, .row-content > .col-xs-2:hover {
+  border-color: #5300A6;
+}
+
+/****************/
+
+/*****FOOTER*****/
+.row-footer {
+  height: 30%;
+  width: 100%;
+  border-color: #F4F4F4;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.row-footer:hover {
+  border-color: #5300A6;
+}
+/****************/

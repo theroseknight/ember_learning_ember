@@ -1,4 +1,20 @@
-{{#each model as |vacation|}}
-  {{vacation.name}}
-{{/each}}
+<div class="container">
+  <div class="row row-header">
+    {{action-bar actionsArray=actionsArray}}
+  </div>
+  <div class="row row-content">
+    <div class="col-xs-2" id="left-landing-column">
+
+    </div>
+    <div class="col-xs-8">
+      {{focusedModel.name}}
+    </div>
+    <div class="col-xs-2" id="right-landing-column">
+    </div>
+  </div>
+  <div class="row row-footer">
+    {{model-slider model=model action="focusedModel"}}
+  </div>
+</div>
+
 {{outlet}}
