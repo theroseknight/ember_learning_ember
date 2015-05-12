@@ -8,5 +8,9 @@ var Router = Ember.Router.extend({
 export default Router.map(function() {
   this.resource("vacations",{path:'/'}, function(){
     this.route("new");
+    this.resource("vacation",{path:'vacations/:vacationId'},function(){
+      this.route("edit");
+
+    })
   });
 });
