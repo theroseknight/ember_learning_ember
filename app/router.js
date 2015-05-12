@@ -11,6 +11,6 @@ export default Router.map(function() {
     this.resource("vacation",{path:'vacations/:vacationId'},function(){
       this.route("edit");
 
-    })
+    });
   });
 });
