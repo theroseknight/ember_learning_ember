@@ -10,7 +10,9 @@ export default Router.map(function() {
     this.route("new");
     this.resource("vacation",{path:'vacations/:vacationId'},function(){
       this.route("edit");
-
+      this.resource("legs",function(){
+        this.route("new")
+      })
     });
   });
 });
