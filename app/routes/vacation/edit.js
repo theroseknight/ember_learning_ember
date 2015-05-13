@@ -14,6 +14,7 @@ export default Ember.Route.extend({
           "vacation[name]":controller.get("model.name"),
         },
         success:function(data){
+          $('#updateVacationModal').modal('hide');
           controller.store.push("vacation",controller.store.normalize("vacation",data.vacation));
           route.transitionTo('/vacations'+ "/" + data.vacation.id);
         },
