@@ -10,8 +10,6 @@ export default Ember.Route.extend({
       'actionsArray',
       [
         {action:"resetMap", label:"Reset Map"},
-        {action:"share", label:"Share"},
-        {action:"print", label:"Print"},
         {link:"vacations.new", label:"New Vacation"}
       ]
     );

@@ -1,0 +1,44 @@
+<div class="modal" id="newLegModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Leg</h4>
+      </div>
+      <div class="modal-body">
+        <form {{action "create"  on="submit"}} class="form-horizontal col-xs-12 col-sm-12 col-md-12  col-lg-12">
+
+          <div class="form-group"><label class="control-label col-xs-3 col-sm-3 col-md-3  col-lg-3">Starting City</label>
+            <div class="col-xs-7 col-sm-7 col-md-7  col-lg-7">
+              {{input value=model.startingCity type="text" id="startingCity" class="form-control" required="true"}}
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2  col-lg-2"></div>
+          </div>
+          <div class="form-group"><label class="control-label col-xs-3 col-sm-3 col-md-3  col-lg-3">Starting State</label>
+            <div class="col-xs-7 col-sm-7 col-md-7  col-lg-7">
+              {{input value=model.startingState type="text" id="startingState" class="form-control" required="true"}}
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2  col-lg-2"></div>
+          </div>
+          <div class="form-group"><label class="control-label col-xs-3 col-sm-3 col-md-3  col-lg-3">Ending City</label>
+            <div class="col-xs-7 col-sm-7 col-md-7  col-lg-7">
+              {{input value=model.endingCity type="text" id="endingCity" class="form-control" required="true"}}
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2  col-lg-2"></div>
+          </div>
+          <div class="form-group"><label class="control-label col-xs-3 col-sm-3 col-md-3  col-lg-3">Ending State</label>
+            <div class="col-xs-7 col-sm-7 col-md-7  col-lg-7">
+              {{input value=model.endingState type="text" id="endingState" class="form-control" required="true"}}
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2  col-lg-2"></div>
+          </div>
+
+          <div class="text-center col-xs-12 col-sm-12 col-md-12  col-lg-12">
+            <button  type="submit" class="btn btn-success modal-create-button" value="Create">Create</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

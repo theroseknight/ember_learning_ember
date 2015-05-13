@@ -1,7 +1,9 @@
 {{outlet}}
 <div class="row row-content">
   <div class="col-xs-2" id="left-landing-column">
-
+    {{#each model.legs as |leg|}}
+      {{leg.endingCity}}
+    {{/each}}
   </div>
   <div class="col-xs-8">
 
@@ -9,3 +11,4 @@
   <div class="col-xs-2" id="right-landing-column">
   </div>
 </div>
+{{outlet "legs"}}

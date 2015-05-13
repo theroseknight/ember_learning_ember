@@ -1,6 +1,6 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
-  actions: {
+    actions: {
     create:function(){
       var route = this;
       var controller = this.controllerFor('vacations.new');
