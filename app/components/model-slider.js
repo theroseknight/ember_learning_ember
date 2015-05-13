@@ -21,11 +21,13 @@ export default Ember.Component.extend({
       var currentEnding = this.get('endingPosition');
       var arrayLength = this.get('reverseModel').length;
 
-      if(currentStarting === 0){
-        //Build logic here if you want your bar to wrap around
-      }else{
-        this.set('startingPosition', currentStarting - 1)
-        this.set('endingPosition',currentEnding - 1)
+      if(arrayLength > 5){
+        if(currentStarting === 0){
+          //Build logic here if you want your bar to wrap around
+        }else{
+          this.set('startingPosition', currentStarting - 1)
+          this.set('endingPosition',currentEnding - 1)
+        }
       }
     },
     slideRight: function() {
@@ -33,11 +35,13 @@ export default Ember.Component.extend({
       var currentEnding = this.get('endingPosition');
       var arrayLength = this.get('reverseModel').length;
 
-      if(currentEnding === arrayLength){
-        //Build logic here if you want your bar to wrap around
-      }else{
-        this.set('startingPosition',currentStarting + 1)
-        this.set('endingPosition',currentEnding + 1)
+      if(arrayLength > 5){
+        if(currentEnding === arrayLength){
+          //Build logic here if you want your bar to wrap around
+        }else{
+          this.set('startingPosition', currentStarting + 1)
+          this.set('endingPosition',currentEnding + 1)
+        }
       }
     }
   }

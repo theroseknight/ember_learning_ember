@@ -1,0 +1,25 @@
+.modal-dialog {
+ display:black;
+ overflow: auto;
+}
+
+.modal-dialog > .modal-content {
+  display:black;
+  overflow: auto;
+  padding-bottom: 3%;
+}
+
+.modal-create-button {
+  width: 8%;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  min-width: 120px;
+  font-family: 'BenchNine', sans-serif;
+  background-color: #5300A6;
+}
+
+.modal-create-button:hover {
+  background-color: #F4F4F4;
+  border-color: #5300A6;
+  color: black;
+}
