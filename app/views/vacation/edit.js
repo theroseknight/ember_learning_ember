@@ -1,3 +1,4 @@
+console.log("ember - app/views/vacation/edit.js")
 import Ember from 'ember';
 
 export default Ember.View.extend({

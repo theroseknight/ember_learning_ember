@@ -1,4 +1,4 @@
-console.log("ember - app/models/leg.js")
+console.log("ember - app/models/some.js")
 import DS from 'ember-data';
 var attr=DS.attr;
 

@@ -1,3 +1,4 @@
+console.log("ember - app/models/vacation.js")
 import DS from 'ember-data';
 var attr=DS.attr;
 

@@ -1,6 +1,7 @@
 /* jshint node: true */
-
+console.log("ember - config/environment.js")
 module.exports = function(environment) {
+  console.log("ember - config/environment.js")
   var ENV = {
     modulePrefix: 'ember-learning-ember',
     environment: environment,
@@ -8,7 +9,7 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy:{
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval'",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline'",
       'font-src': "'self'",
       'connect-src': "'self' localhost:3000 ",
       'img-src': "'self'",

@@ -1,3 +1,4 @@
+console.log("ember - app/adapters/application.js")
 import Ember from "ember";
 import DS from "ember-data";
 import ENV from '../config/environment';

@@ -1,3 +1,4 @@
+console.log("ember - Brocfile.js")
 /* global require, module */
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');

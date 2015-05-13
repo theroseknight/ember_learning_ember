@@ -1,3 +1,4 @@
+console.log("ember - app/views/legs/new.js")
 import Ember from 'ember';
 
 export default Ember.View.extend({
