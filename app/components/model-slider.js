@@ -1,17 +1,26 @@
-console.log("ember - app/components/action-bar.js")
+console.log("ember - app/components/model-slider.js")
 import Ember from 'ember';
 
 export default Ember.Component.extend({
   startingPosition: 0,
   endingPosition: 5,
+  didInsertElement:function(params){
+    console.log(this.get("innerModel"))
+    var modelId = this.get('focusedModel')
+    $("#slider-button-"+modelId).addClass("slider-selected").siblings().removeClass("slider-selected");
+    console.log("wtf")
+  },
   modelDidChange: function(){
     var reverseModel = [];
-    this.get('model').forEach(function(item){
+    this.get('innerModel').forEach(function(item){
       reverseModel.push(item);
     });
     this.set('reverseModel',reverseModel.reverse());
     this.set('displayModel',reverseModel.slice(this.get('startingPosition'),this.get('endingPosition')));
-  }.observes("model.@each","startingPosition","endingPosition"),
+  }.observes("innerModel.@each","startingPosition","endingPosition"),
+  firstFive:function(){
+    return this.get("innerModel").slice(this.get('startingPosition'),this.get('endingPosition'));
+  }.property("innerModel.[]","startingPosition","endingPosition"),
   actions: {
     sliderButtonFocus: function(params) {
       this.sendAction('action',params);

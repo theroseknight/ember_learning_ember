@@ -4,8 +4,8 @@ export default Ember.Route.extend({
   model: function() {
 	 return this.store.find("vacation");
 	},
-  setupController:function(controller){
-    this._super();
+  setupController:function(controller,model){
+    this._super(controller,model);
     //Action-Bar Component
     controller.set(
       'actionsArray',
@@ -15,7 +15,8 @@ export default Ember.Route.extend({
       ]
     );
     //Model-Slider Component
-    controller.set('model',this.store.find("vacation"));
+    //controller.set('model',this.modelFor('vacations'))
+    //controller.set('model',this.store.find("vacation"));
   },
   actions:{
 

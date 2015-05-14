@@ -12,6 +12,10 @@
   <div class="col-xs-2" id="right-landing-column">
   </div>
 </div>
+{{#each model as |some|}}
+  {{log some}}
+{{/each}}
+{{log model}}
 <div class="row row-footer">
-  {{model-slider model=model action="focusedModel"}}
+  {{model-slider innerModel=model action="focusedModel"}}
 </div>
