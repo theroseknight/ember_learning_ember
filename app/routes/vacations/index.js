@@ -14,6 +14,8 @@ export default Ember.Route.extend({
         {link:"vacations.new", label:"New Vacation"}
       ]
     );
+    //Model-Slider Component
+    controller.set('model',this.store.find("vacation"));
   },
   actions:{
 

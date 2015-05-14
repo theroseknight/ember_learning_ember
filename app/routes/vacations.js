@@ -5,9 +5,7 @@ export default Ember.Route.extend({
 	 return this.store.find("vacation");
 	},
   setupController:function(controller){
-    this._super();
-    //Model-Slider Component
-    controller.set('model',this.store.find("vacation"));
+    this._super();    
   },
   actions:{
     focusedModel: function(params) {
