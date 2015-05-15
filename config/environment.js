@@ -9,11 +9,11 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy:{
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' 'unsafe-inline'",
-      'font-src': "'self'",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com",
+      'font-src': "'self' https://*.gstatic.com",
       'connect-src': "'self' localhost:3000 ",
-      'img-src': "'self'",
-      'style-src': "'self' 'unsafe-eval' 'unsafe-inline'",
+      'img-src': "'self' https://*.googleapis.com https://*.gstatic.com",
+      'style-src': "'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com",
       'media-src': "'self'"
     },
     EmberENV: {

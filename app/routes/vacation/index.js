@@ -23,6 +23,9 @@ export default Ember.Route.extend({
     var updatedObject = controller.store.getById('vacation',model.id);
     updatedObject.set('focused',true)
     updatedObject.save()
+    //Google_map Component
+    controller.set('legModel',this.modelFor('vacation').get('legs'));
+    console.log(this.modelFor('vacation'))
   },
   actions:{
     focusedModel: function(params) {

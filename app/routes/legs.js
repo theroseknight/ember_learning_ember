@@ -5,9 +5,6 @@ export default Ember.Route.extend({
     console.log("adsfalsdjk")
 	 return this.store.find("leg");
 	},
-  renderTemplate: function() {
-    this.render({ outlet: 'legs' });
-  },
   actions:{
 
   }

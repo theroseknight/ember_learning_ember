@@ -27,4 +27,5 @@ app.import('app/styles/-leg-container.css');
 app.import('app/styles/modals.css');
 app.import('app/styles/app.css');
 app.import('vendor/custom-utilities.js');
+app.import('vendor/gmaps.js');
 module.exports = app.toTree();

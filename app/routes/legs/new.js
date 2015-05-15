@@ -38,19 +38,11 @@ export default Ember.Route.extend({
         },
         success:function(data){
           $('#newLegModal').modal('hide');
-          console.log(data.legs[0])
-          console.log(data.legs[0].id)
-          console.log(data.legs[0].endingCity)
-          console.log(vacationController.get('model.legs.length'))
           if(vacationController.get('model.legs.length')===0){
-            console.log("marker true")
-            console.log("here we")
             data.legs.forEach(function(item){
               controller.store.push("leg",controller.store.normalize("leg",item));
             });
           }else{
-            console.log(data)
-            console.log("marker false")
             controller.store.push("leg",controller.store.normalize("leg",data.legs[0]));
             var updatedObject = controller.store.getById('leg',data.legs[1].id);
             console.log(data.legs[1].id)
@@ -61,7 +53,6 @@ export default Ember.Route.extend({
           }
 
 
-          route.transitionTo('/vacations'+ "/" + vacationController.get('model.id'));
         },
         error:function(){
           console.log("fail");

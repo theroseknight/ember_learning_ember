@@ -3,8 +3,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    resetMap: function() {
-
+    resetMap:function(){
+      window.location.reload(true);
     },
     share: function() {
 
