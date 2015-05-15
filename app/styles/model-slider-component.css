@@ -62,10 +62,16 @@
   width: 2.5%;
   height: 0;
   padding-bottom: 2.5%;
-  border-color: #5300A6;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
+  border-color: #F4F4F4;
+  background: #F4F4F4;
   bottom: 35%;
+}
+
+.slider-button:hover {
+  background: #F4F4F4;
+  border-color: #F4F4F4;
 }
 
 #slider-button-left {
@@ -75,5 +81,16 @@
 #slider-button-right {
  right: 1.25%;
 }
+
+#slider-button:focus {
+  border:none;
+  outline:none !important;
+}
+
+.fa-arrow-circle-left, .fa-arrow-circle-right {
+    font-size: 260%;
+}
+
+
 
 /****************/

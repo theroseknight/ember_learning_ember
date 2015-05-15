@@ -3,12 +3,12 @@
   {{#each actionHash in actionsArray}}
     {{#if actionHash.link}}
       {{#link-to actionHash.link}}
-        <button id="clear-completed" class="btn btn-default" role="button">
+        <button id="clear-completed" class="action-bar-button" role="button">
           {{actionHash.label}}
         </button>
       {{/link-to}}
     {{else}}
-    <button id="clear-completed" class="btn btn-default" role="button" {{action actionHash.action}}>
+    <button id="clear-completed" class="action-bar-button" role="button" {{action actionHash.action}}>
       {{actionHash.label}}
     </button>
     {{/if}}

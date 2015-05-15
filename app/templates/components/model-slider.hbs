@@ -1,5 +1,6 @@
 {{log "ember - app/templates/components/model-slider.hbs"}}
 <button class="slider-button" id="slider-button-left" {{action "slideLeft"}}>
+  {{fa-icon "fa fa-arrow-circle-left"}}
 </button>
 {{#each firstFive as |vacation|}}
   {{#if vacation.focused}}
@@ -13,4 +14,5 @@
   {{/if}}
 {{/each}}
 <button class="slider-button" id="slider-button-right" {{action "slideRight"}}>
+  {{fa-icon "fa fa-arrow-circle-right"}}
 </button>

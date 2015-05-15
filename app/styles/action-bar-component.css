@@ -17,19 +17,30 @@
   text-decoration: none;
 }
 
-.btn-group-justified > .btn, .btn-group-justified > a > .btn {
+.btn-group-justified > a {
+  color: black;
+}
+
+.btn-group-justified > .action-bar-button, .btn-group-justified > a > .action-bar-button {
   width: 8%;
-  margin-left: 1% !important;
-  margin-right: 1% !important;
+  margin-left: 1%;
+  margin-right: 1%;
   min-width: 120px;
   font-family: 'BenchNine', sans-serif;
-  background-color: #F4F4F4;
-  border-color: #5300A6;
+  color: black;
+  margin-bottom: 1%;
 }
 
 .btn-group-justified > .btn:hover, .btn-group-justified > a > .btn:hover {
   background-color: #5300A6;
   color: white;
   font-size: 15px;
+}
+
+.action-bar-button:hover {
+  width: 10% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  background: #9C9CBC;
 }
 /****************/
