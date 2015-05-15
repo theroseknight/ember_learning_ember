@@ -34,7 +34,14 @@ export default Ember.Route.extend({
       });
     },
     focusedLeg: function(params) {
+      var route = this;
       console.log(params)
+      var updatedObject = route.controllerFor("vacation.index").store.getById('leg',params);
+      updatedObject.set('focused',false)
+      updatedObject.save().then(function(){
+        $('#leg-button-'+params).addClass("leg-button-focused")
+        $('#leg-button-'+params).siblings().removeClass("leg-button-focused");
+      });
     }
   }
 });

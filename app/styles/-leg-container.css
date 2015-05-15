@@ -15,6 +15,11 @@
 
 .leg-button:hover {
   width: 100%;
-
   background: #9C9CBC;
+}
+
+.leg-button-focused {
+  width: 100%;
+  background: #5300A6;
+  color: white;
 }
