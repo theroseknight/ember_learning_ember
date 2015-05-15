@@ -3,8 +3,10 @@
   {{action-bar actionsArray=actionsArray outercontroller=this}}
 </div>
 <div class="row row-content">
-  <div class="col-xs-2" id="left-landing-column">
-
+  <div class="col-xs-2 leg-holder" id="left-landing-column">
+    {{#each focusModel.legs as |leg|}}
+      {{partial "leg-container"}}
+    {{/each}}
   </div>
   <div class="col-xs-8">
 
@@ -12,10 +14,6 @@
   <div class="col-xs-2" id="right-landing-column">
   </div>
 </div>
-{{#each model as |some|}}
-  {{log some}}
-{{/each}}
-{{log model}}
 <div class="row row-footer">
-  {{model-slider innerModel=model action="focusedModel"}}
+  {{model-slider innerModel=model action="focusedModel" outerController=this idType="vacation"}}
 </div>

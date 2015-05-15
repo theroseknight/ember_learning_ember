@@ -12,5 +12,7 @@ export default DS.Model.extend({
   startingLng: attr(),
   endingLat: attr(),
   endingLng: attr(),
+  markerPosition: attr(),
+  homeMarker: attr(),
   vacation:DS.belongsTo("vacation",{async:true})
 });

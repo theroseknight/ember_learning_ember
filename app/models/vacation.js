@@ -4,5 +4,6 @@ var attr=DS.attr;
 
 export default DS.Model.extend({
   name: attr(),
-  legs:DS.hasMany("leg",{async:true})
+  legs:DS.hasMany("leg",{async:true}),
+  focused: attr()
 });

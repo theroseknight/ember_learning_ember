@@ -41,6 +41,10 @@ html, body, body > .ember-view, .ember-view > .container, body > .ember-view > .
   margin-bottom: 2%;
 }
 
+.row-content > .col-xs-8:hover {
+  border-color: #5300A6;
+}
+
 .row-content > .col-xs-2 {
   width: 13.666666667%
 }
@@ -57,7 +61,8 @@ html, body, body > .ember-view, .ember-view > .container, body > .ember-view > .
   margin-bottom: 2%;
 }
 
-.row-content > .col-xs-8:hover, .row-content > .col-xs-2:hover {
+
+.row-content > #right-landing-column:hover {
   border-color: #5300A6;
 }
 

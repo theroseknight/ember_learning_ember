@@ -2,9 +2,15 @@
 <button class="slider-button" id="slider-button-left" {{action "slideLeft"}}>
 </button>
 {{#each firstFive as |vacation|}}
-  <button class="slider-object {{sliderDimensions}}" id="slider-button-{{vacation.id}}" {{action "sliderButtonFocus" vacation.id}}>
-    {{vacation.name}}
-  </button>
+  {{#if vacation.focused}}
+    <button class="slider-object {{sliderDimensions}} slider-selected" id="slider-button-{{vacation.id}}" {{action "sliderButtonFocus" vacation.id}}>
+      {{vacation.name}}
+    </button>
+  {{else}}
+    <button class="slider-object {{sliderDimensions}}" id="slider-button-{{vacation.id}}" {{action "sliderButtonFocus" vacation.id}}>
+      {{vacation.name}}
+    </button>
+  {{/if}}
 {{/each}}
 <button class="slider-button" id="slider-button-right" {{action "slideRight"}}>
 </button>

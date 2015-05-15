@@ -4,27 +4,30 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   startingPosition: 0,
   endingPosition: 5,
-  didInsertElement:function(params){
-    console.log(this.get("innerModel"))
-    var modelId = this.get('focusedModel')
-    $("#slider-button-"+modelId).addClass("slider-selected").siblings().removeClass("slider-selected");
-    console.log("wtf")
-  },
-  modelDidChange: function(){
+  firstFive:function(){
+    var component = this;
+    var controller = component.get('outerController');
     var reverseModel = [];
     this.get('innerModel').forEach(function(item){
       reverseModel.push(item);
     });
     this.set('reverseModel',reverseModel.reverse());
-    this.set('displayModel',reverseModel.slice(this.get('startingPosition'),this.get('endingPosition')));
-  }.observes("innerModel.@each","startingPosition","endingPosition"),
-  firstFive:function(){
-    return this.get("innerModel").slice(this.get('startingPosition'),this.get('endingPosition'));
+    return this.get("reverseModel").slice(this.get('startingPosition'),this.get('endingPosition'));
   }.property("innerModel.[]","startingPosition","endingPosition"),
   actions: {
     sliderButtonFocus: function(params) {
-      this.sendAction('action',params);
-      $("#slider-button-"+params).addClass("slider-selected").siblings().removeClass("slider-selected");
+      var component = this;
+      if(component.get('modelId')===undefined){
+        component.sendAction('action',params);
+      }else{
+        var controller = component.get('outerController');
+        var updatedObject = controller.store.getById(component.get('idType'),component.get("modelId"));
+        updatedObject.set('focused',false)
+        updatedObject.save().then(function(){
+          component.sendAction('action',params);
+        });
+      }
+
     },
     slideLeft: function() {
       var currentStarting = this.get('startingPosition');

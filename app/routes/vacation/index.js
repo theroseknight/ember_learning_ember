@@ -18,12 +18,23 @@ export default Ember.Route.extend({
         {link:"legs.new",label:"New Leg"}
       ]
     );
-    //Model-Slider Component
-    //controller.set('model',this.modelFor('vacations'))
+    //Model-Slider Component - Needed because the model is only a single instance and we need the whole array for our component.
     controller.set('innerModel',this.store.find("vacation"));
-    controller.set('focusedModel',model.id)
+    var updatedObject = controller.store.getById('vacation',model.id);
+    updatedObject.set('focused',true)
+    updatedObject.save()
   },
   actions:{
-
+    focusedModel: function(params) {
+      var route = this;
+      var updatedObject = this.controllerFor('vacations').store.getById('vacation',params);
+      updatedObject.set('focused',true)
+      updatedObject.save().then(function(){
+        route.transitionTo('/vacations'+ "/" + params);
+      });
+    },
+    focusedLeg: function(params) {
+      console.log(params)
+    }
   }
 });

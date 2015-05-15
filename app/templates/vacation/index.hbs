@@ -1,11 +1,11 @@
 {{log "ember - app/templates/vacation/index.hbs"}}
 <div class="row row-header">
-  {{action-bar actionsArray=actionsArray outerController=this id=model.id idType="vacation" transitionDestroy="/" transitionUpdate="vacation"}}
+  {{action-bar actionsArray=actionsArray transitionDestroy="/" id=model.id outerController=this idType="vacation"}}
 </div>
 <div class="row row-content">
-  <div class="col-xs-2" id="left-landing-column">
+  <div class="col-xs-2 leg-holder" id="left-landing-column">
     {{#each model.legs as |leg|}}
-      {{leg.endingCity}}
+      {{partial "leg-container"}}
     {{/each}}
   </div>
   <div class="col-xs-8">
@@ -15,5 +15,5 @@
   </div>
 </div>
 <div class="row row-footer">
-  {{model-slider innerModel=innerModel action="focusedModel" focusedModel=focusedModel}}
+  {{model-slider innerModel=innerModel action="focusedModel" modelId=model.id outerController=this idType="vacation"}}
 </div>
