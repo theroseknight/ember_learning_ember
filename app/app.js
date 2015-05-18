@@ -1,4 +1,3 @@
-console.log("ember - app/app.js")
 import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';

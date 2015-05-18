@@ -1,4 +1,3 @@
-console.log("ember - app/components/model-slider.js")
 import Ember from 'ember';
 
 export default Ember.Component.extend({

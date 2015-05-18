@@ -1,4 +1,3 @@
-console.log("ember - app/router.js")
 import Ember from 'ember';
 import config from './config/environment';
 

@@ -1,9 +1,12 @@
-console.log("ember - app/routes/vacation/index.js")
 import Ember from 'ember';
 
 export default Ember.Route.extend({
   model:function(params){
+    this.legModel();
     return this.modelFor('vacation');
+  },
+  legModel:function(){
+    return this.modelFor('vacation').get('legs')
   },
   setupController:function(controller,model){
     this._super(controller,model);
@@ -25,7 +28,20 @@ export default Ember.Route.extend({
     updatedObject.save()
     //Google_map Component
     controller.set('legModel',this.modelFor('vacation').get('legs'));
-    console.log(this.modelFor('vacation'))
+
+    $.ajax({
+      url:"http://localhost:3000/markers",
+      method:"GET",
+      data:{
+        "marker[vacation_id]":controller.get("model.id")
+      },
+      success:function(data){
+        controller.set('markers',data.markers)
+      },
+      error:function(){
+        console.log('fail')
+      },
+    });
   },
   actions:{
     focusedModel: function(params) {

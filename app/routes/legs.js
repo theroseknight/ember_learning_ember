@@ -1,4 +1,3 @@
-console.log("ember - app/routes/legs.js")
 import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {

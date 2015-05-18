@@ -1,4 +1,3 @@
-console.log("ember - app/routes/legs/new.js")
 import Ember from 'ember';
 export default Ember.Route.extend({
   model:function(params){
@@ -23,6 +22,17 @@ export default Ember.Route.extend({
       var startingState = controller.get('model.startingState')
       var endingCity = controller.get('model.endingCity')
       var endingState = controller.get('model.endingState')
+
+      var options = {
+        //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
+        center: new window.google.maps.LatLng(
+          this.get('latitude'),
+          this.get('longitude')
+        ),
+        zoom: 4
+      };
+
+      var geocoder = new window.google.maps.GeoCoder("Florida");
 
       $.ajax({
         url:"http://localhost:3000/legs",
