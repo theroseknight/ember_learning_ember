@@ -11,8 +11,8 @@ export default Router.map(function() {
     this.resource("roadtrip",{path:'roadtrips/:roadtripId'},function(){
       this.route("edit");
       this.resource("legs",function(){
-        this.route("new")
-      })
+        this.route("new");
+      });
     });
   });
 });

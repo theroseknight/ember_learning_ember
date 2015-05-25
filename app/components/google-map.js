@@ -3,14 +3,13 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   setMarkers:function(){
     var component = this;
-    var controller = component.get('outerController');
-    var legs = component.get('legs')
+    var legs = component.get('legs');
 
     Ember.run.scheduleOnce('afterRender', component, function() {
       this.insertMap();
       var map = component.get('map');
 
-      if(legs.get('firstObject').get('latitude')!=undefined){
+      if(legs.get('firstObject').get('latitude')!==undefined){
         legs.forEach(function(leg){
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(leg.get('latitude'), leg.get('longitude')),

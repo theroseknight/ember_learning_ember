@@ -5,13 +5,12 @@ export default Ember.Component.extend({
   endingPosition: 5,
   firstFive:function(){
     var component = this;
-    var controller = component.get('outerController');
     var reverseModel = [];
-    this.get('innerModel').forEach(function(item){
+    component.get('innerModel').forEach(function(item){
       reverseModel.push(item);
     });
-    this.set('reverseModel',reverseModel.reverse());
-    return this.get("reverseModel").slice(this.get('startingPosition'),this.get('endingPosition'));
+    component.set('reverseModel',reverseModel.reverse());
+    return component.get("reverseModel").slice(component.get('startingPosition'),component.get('endingPosition'));
   }.property("innerModel.[]","startingPosition","endingPosition"),
   actions: {
     sliderButtonFocus: function(params) {
@@ -21,7 +20,7 @@ export default Ember.Component.extend({
       }else{
         var controller = component.get('outerController');
         var updatedObject = controller.store.getById(component.get('idType'),component.get("modelId"));
-        updatedObject.set('focused',false)
+        updatedObject.set('focused',false);
         updatedObject.save().then(function(){
           component.sendAction('action',params);
         });

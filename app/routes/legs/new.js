@@ -1,37 +1,21 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
-  model:function(params){
+  model:function(){
     var route=this;
 		return route.modelFor("roadtrip").get("legs");
 	},
   actions: {
     create:function(){
       var route = this;
-      var controller = this.controllerFor('legs.new')
-      var roadtripController = this.controllerFor('roadtrip')
-      var modelLength = this.get('model.length')
+      var controller = this.controllerFor('legs.new');
+      var roadtripController = this.controllerFor('roadtrip');
 
-
+      var homeMarker = null;
       if(roadtripController.get('model.legs.length')===0){
-        var homeMarker = true
+         homeMarker = true;
       }else{
-        var homeMarker = false
+         homeMarker = false;
       }
-
-      var startingCity = controller.get('model.startingCity')
-      var startingState = controller.get('model.startingState')
-      var endingCity = controller.get('model.endingCity')
-      var endingState = controller.get('model.endingState')
-
-      var options = {
-        //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
-        center: new window.google.maps.LatLng(
-          this.get('latitude'),
-          this.get('longitude')
-        ),
-        zoom: 4
-      };
-
 
       $.ajax({
         url:"http://localhost:3000/legs",
@@ -55,7 +39,7 @@ export default Ember.Route.extend({
           }else{
             controller.store.push("leg",controller.store.normalize("leg",data.legs[0]));
             var updatedObject = controller.store.getById('leg',data.legs[1].id);
-            console.log(data.legs[1].id)
+            console.log(data.legs[1].id);
             //updatedObject.set('focused',true)
             //updatedObject.save().then(function(){
               route.transitionTo('/roadtrips'+ "/" + roadtripController.get('model.id'));

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model:function(params){
+  model:function(){
     return this.modelFor('roadtrip');
   },
   setupController:function(controller,model){
@@ -20,8 +20,8 @@ export default Ember.Route.extend({
     //Model-Slider Component - Needed because the model is only a single instance and we need the whole array for our component.
     controller.set('model.innerModel',this.store.find("roadtrip"));
     var updatedObject = controller.store.getById('roadtrip',model.id);
-    updatedObject.set('focused',true)
-    updatedObject.save()
+    updatedObject.set('focused',true);
+    updatedObject.save();
     //Google_map Component
 
   },
@@ -29,7 +29,7 @@ export default Ember.Route.extend({
     focusedModel: function(params) {
       var route = this;
       var updatedObject = this.store.getById('roadtrip',params);
-      updatedObject.set('focused',true)
+      updatedObject.set('focused',true);
       updatedObject.save().then(function(){
         route.transitionTo('/roadtrips'+ "/" + params);
       });
@@ -37,9 +37,9 @@ export default Ember.Route.extend({
     focusedLeg: function(params) {
       var route = this;
       var updatedObject = route.store.getById('leg',params);
-      updatedObject.set('focused',true)
+      updatedObject.set('focused',true);
       updatedObject.save().then(function(){
-        $('#leg-button-'+params).addClass("leg-button-focused")
+        $('#leg-button-'+params).addClass("leg-button-focused");
         $('#leg-button-'+params).siblings().removeClass("leg-button-focused");
       });
     }
