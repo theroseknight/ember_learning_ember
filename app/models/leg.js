@@ -11,6 +11,6 @@ export default DS.Model.extend({
   longitude: attr(),
   markerPosition: attr(),
   homeMarker: attr(),
-  vacation:DS.belongsTo("vacation",{async:true}),
+  roadtrip:DS.belongsTo("roadtrip",{async:true}),
   focused: attr()
 });

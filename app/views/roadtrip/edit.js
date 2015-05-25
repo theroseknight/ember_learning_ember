@@ -4,10 +4,10 @@ export default Ember.View.extend({
   didInsertElement: function() {
     var view=this;
     var controller=view.get("controller");
-    $('#updateVacationModal').modal();
+    $('#updateroadtripModal').modal();
     $('.btn').removeClass("active");
-    $("#updateVacationModal").on("hidden.bs.modal",function(){
-      controller.transitionToRoute("vacation.index");
+    $("#updateroadtripModal").on("hidden.bs.modal",function(){
+      controller.transitionToRoute("roadtrip.index");
     });
   }
 });

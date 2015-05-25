@@ -6,9 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.resource("vacations",{path:'/'}, function(){
+  this.resource("roadtrips",{path:'/'}, function(){
     this.route("new");
-    this.resource("vacation",{path:'vacations/:vacationId'},function(){
+    this.resource("roadtrip",{path:'roadtrips/:roadtripId'},function(){
       this.route("edit");
       this.resource("legs",function(){
         this.route("new")

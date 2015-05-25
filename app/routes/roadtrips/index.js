@@ -1,7 +1,7 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {
-	 return this.modelFor("vacations");
+	 return this.modelFor("roadtrips");
 	},
   setupController:function(controller,model){
     this._super(controller,model);
@@ -10,7 +10,7 @@ export default Ember.Route.extend({
       'actionsArray',
       [
         {action:"resetMap", label:"Reset Map"},
-        {link:"vacations.new", label:"New Vacation"}
+        {link:"roadtrips.new", label:"New Roadtrip"}
       ]
     );
     controller.set('focusModel',model.objectAt(model.get('length')-1));
@@ -18,7 +18,7 @@ export default Ember.Route.extend({
   actions:{
     focusedModel: function(params) {
       var route = this;
-      route.transitionTo('/vacations'+ "/" + params);
+      route.transitionTo('/roadtrips'+ "/" + params);
     }
   }
 });

@@ -6,7 +6,7 @@ export default Ember.View.extend({
     $('#newLegModal').modal();
     $('.btn').removeClass("active");
     $("#newLegModal").on("hidden.bs.modal",function(){
-      view.get("controller").transitionToRoute("vacations");
+      view.get("controller").transitionToRoute("roadtrips");
     });
   }
 });
