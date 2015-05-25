@@ -1,6 +1,6 @@
 /*************************************LANDING PAGE *********************************************************/
 /* Setting up the core framework of the page to be responsive*/
-html, body, body > .ember-view, .ember-view > .container, body > .ember-view > .ember-view, body > .ember-view > .ember-view > .ember-view, .google-map-holder > .ember-view, .container > .ember-view, .container > .ember-view > .ember-view, .container > .ember-view > .ember-view > .ember-view{
+html, body, .ember-view, .container{
   height: 100%;
   width: 100%;
   background-color: #F4F4F4;

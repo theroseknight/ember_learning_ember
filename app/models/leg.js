@@ -7,6 +7,8 @@ export default DS.Model.extend({
   startingState: attr(),
   endingCity: attr(),
   endingState: attr(),
+  latitude: attr(),
+  longitude: attr(),
   markerPosition: attr(),
   homeMarker: attr(),
   vacation:DS.belongsTo("vacation",{async:true}),

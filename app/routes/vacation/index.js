@@ -2,17 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model:function(params){
-    this.legModel();
     return this.modelFor('vacation');
-  },
-  legModel:function(){
-    return this.modelFor('vacation').get('legs')
   },
   setupController:function(controller,model){
     this._super(controller,model);
     //Action-Bar Component
     controller.set(
-      'actionsArray',
+      'model.actionsArray',
       [
         {action:"resetMap", label:"Reset Map"},
         {link:"vacations.new", label:"New Vacation"},
@@ -22,31 +18,17 @@ export default Ember.Route.extend({
       ]
     );
     //Model-Slider Component - Needed because the model is only a single instance and we need the whole array for our component.
-    controller.set('innerModel',this.store.find("vacation"));
+    controller.set('model.innerModel',this.store.find("vacation"));
     var updatedObject = controller.store.getById('vacation',model.id);
     updatedObject.set('focused',true)
     updatedObject.save()
     //Google_map Component
-    controller.set('legModel',this.modelFor('vacation').get('legs'));
-
-    $.ajax({
-      url:"http://localhost:3000/markers",
-      method:"GET",
-      data:{
-        "marker[vacation_id]":controller.get("model.id")
-      },
-      success:function(data){
-        controller.set('markers',data.markers)
-      },
-      error:function(){
-        console.log('fail')
-      },
-    });
+    
   },
   actions:{
     focusedModel: function(params) {
       var route = this;
-      var updatedObject = this.controllerFor('vacations').store.getById('vacation',params);
+      var updatedObject = this.store.getById('vacation',params);
       updatedObject.set('focused',true)
       updatedObject.save().then(function(){
         route.transitionTo('/vacations'+ "/" + params);
@@ -54,9 +36,8 @@ export default Ember.Route.extend({
     },
     focusedLeg: function(params) {
       var route = this;
-      console.log(params)
-      var updatedObject = route.controllerFor("vacation.index").store.getById('leg',params);
-      updatedObject.set('focused',false)
+      var updatedObject = route.store.getById('leg',params);
+      updatedObject.set('focused',true)
       updatedObject.save().then(function(){
         $('#leg-button-'+params).addClass("leg-button-focused")
         $('#leg-button-'+params).siblings().removeClass("leg-button-focused");

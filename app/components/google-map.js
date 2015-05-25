@@ -1,37 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  markerSet:function(){
-    var gmarkers= [];
+  setMarkers:function(){
     var component = this;
     var controller = component.get('outerController');
-    var markers = this.get('markers')
+    var legs = component.get('legs')
 
-    if(markers===undefined){
-
-    }else{
+    Ember.run.scheduleOnce('afterRender', component, function() {
       this.insertMap();
-      var map = this.get('map');
-      //this.clearMarkers();
-      markers.forEach(function(marker){
-        //console.log(marker)
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(marker.latitude, marker.longitude),
-          map: map
+      var map = component.get('map');
+
+      if(legs.get('firstObject').get('latitude')!=undefined){
+        legs.forEach(function(leg){
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(leg.get('latitude'), leg.get('longitude')),
+            map: map
+          });
         });
-        gmarkers.push(marker)
-      }, this);
-    }
-    controller.set('gmarkers',gmarkers)
-    return this.get("reverseModel");
-  }.property("markers.[]"),
-  clearMarkers:function() {
-    var gmarkers = this.get('gmarkers')
-    var i = 0;
-    for(i=0; i<gmarkers.length; i++){
-      gmarkers[i].setMap(null);
-    }
-  },
+        this.createPolylines();
+      }
+    });
+  }.observes("legs.[]"),
   insertMap:function(){
     //jQuery grabs the div on google-map.hbs template
     var container = this.$('.map-canvas')[0];
@@ -47,47 +36,59 @@ export default Ember.Component.extend({
     this.set('map', new google.maps.Map(container, options));
     //this.setMarkers();
     //this.createPolylines();
-  }.on('didInsertElement'),
-  setMarkers: function() {
-    var outerController = this.get('outerController')
-    var map = this.get('map');
-    var markers = this.get('markers');
-    //console.log(this.get('markers'));
+  },
+  createPolylines:function(){
+    var component = this;
+    var map = component.get('map');
+    var pathCoordinates = [];
+    var legs = component.get('legs');
 
-    if(markers===undefined){
+    legs.forEach(function(leg){
+      var coordinate = new google.maps.LatLng(leg.get('latitude'),leg.get('longitude'));
+      pathCoordinates.push(coordinate);
+    });
 
+    var finalPath = new google.maps.Polyline({
+      path: pathCoordinates,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+    if(pathCoordinates.length !== 0){
+      var service = new google.maps.DirectionsService();
+
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+
+      directionsDisplay.setMap(map);
+
+      var waypts = [];
+      var j=0;
+      for(j=1;j<pathCoordinates.length-1;j++){
+        waypts.push({location: pathCoordinates[j],stopover: true});
+      }
+
+      var request = {
+        origin: pathCoordinates[0],
+        destination: pathCoordinates[pathCoordinates.length-1],
+        waypoints: waypts,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+      };
+
+      service.route(request,function(result, status) {
+        if(status === google.maps.DirectionsStatus.OK){
+          directionsDisplay.setDirections(result);
+        }else{
+          alert("Directions request failed:" +status);
+        }
+      });
     }else{
-      markers.get('markers').forEach(function(marker){
-        //console.log(marker)
-        new google.maps.Marker({
-          position: new google.maps.LatLng(marker.latitude, marker.longitude),
-          map: map
-        });
-      }, this);
+      console.log("No Legs Yet");
     }
+
+
   },
   actions: {
 
   }
 });
-
-
-//Create default map on load
-//markers: [
-
-  //{ latitude: 25.7753, longitude: -80.2089 }, // Miami
-  //{ latitude: 29.6520, longitude: -82.3250}, // Gainesville
-  //{ latitude: 35.5800, longitude: -82.5558}, // Asheville
-  //{ latitude: 38.9047, longitude: -77.0164}, // Washington DC
-  //{ latitude: 40.71356, longitude: -74.00632 }, // New York
-  //{ latitude: 36.1667, longitude: -86.7833}, // Nashville
-  //{ latitude: 33.7550, longitude: -84.3900},  // Atlanta
-  //{ latitude: 29.6520, longitude: -82.3250}, // Gainesville
-  //{ latitude: 25.7753, longitude: -80.2089 }, // Miami
-  //{ latitude: 29.7604, longitude: -95.3698}, // Houston
-  //{ latitude: 39.7392, longitude: -104.9903},// Denver
-  //{ latitude: 29.9500, longitude: -90.0667}, // New Orleans
-  //{ latitude: 35.1107, longitude: -106.6100}, // Alburquerque
-  //{ latitude: 36.1215, longitude: -115.1739}, // Las Vegas
-  //{ latitude: 32.7767, longitude: -96.7970}, // Dallas
-//],

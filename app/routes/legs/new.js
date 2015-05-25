@@ -32,7 +32,6 @@ export default Ember.Route.extend({
         zoom: 4
       };
 
-      var geocoder = new window.google.maps.GeoCoder("Florida");
 
       $.ajax({
         url:"http://localhost:3000/legs",
@@ -52,13 +51,14 @@ export default Ember.Route.extend({
             data.legs.forEach(function(item){
               controller.store.push("leg",controller.store.normalize("leg",item));
             });
+            route.transitionTo('/vacations'+ "/" + vacationController.get('model.id'));
           }else{
             controller.store.push("leg",controller.store.normalize("leg",data.legs[0]));
             var updatedObject = controller.store.getById('leg',data.legs[1].id);
             console.log(data.legs[1].id)
             //updatedObject.set('focused',true)
             //updatedObject.save().then(function(){
-              //route.transitionTo('/vacations'+ "/" + params);
+              route.transitionTo('/vacations'+ "/" + vacationController.get('model.id'));
             //});
           }
 
