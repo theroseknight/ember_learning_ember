@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  focusModel:function(){
+    console.log(this.get('focusedModel'))
+  }.property('focusedModel'),
   setMarkers:function(){
+    console.log("here")
     var component = this;
     var legs = component.get('legs');
 
@@ -35,7 +39,7 @@ export default Ember.Component.extend({
     this.set('map', new google.maps.Map(container, options));
     //this.setMarkers();
     //this.createPolylines();
-  },
+  }.on('didInsertElement'),
   createPolylines:function(){
     var component = this;
     var map = component.get('map');

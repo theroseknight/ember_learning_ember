@@ -1,1 +1,14 @@
 <div u="image" class="map-canvas"></div>
+{{#each firstFive as |roadtrip|}}
+  {{#if roadtrip.focused}}
+    <button class="slider-object {{sliderDimensions}} slider-selected" id="slider-button-{{roadtrip.id}}" {{action "sliderButtonFocus" roadtrip.id}}>
+      {{roadtrip.name}}
+    </button>
+  {{else}}
+    <button class="slider-object {{sliderDimensions}}" id="slider-button-{{roadtrip.id}}" {{action "sliderButtonFocus" roadtrip.id}}>
+      {{roadtrip.name}}
+    </button>
+  {{/if}}
+{{/each}}
+
+{{focusModel}}
