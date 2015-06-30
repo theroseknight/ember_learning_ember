@@ -46,18 +46,18 @@ html, body, .ember-view, .container{
 }
 
 .row-content > .col-xs-2 {
-  width: 13.666666667%
+  width: 15.666666667%
 }
 
 .row-content > #left-landing-column {
-  margin-left: 2%;
-  margin-right: 1%;
+  margin-left: 1%;
+  margin-right: 0%;
   margin-bottom: 2%;
 }
 
 .row-content > #right-landing-column {
-  margin-left: 1%;
-  margin-right: 2%;
+  margin-left: 0%;
+  margin-right: 1%;
   margin-bottom: 2%;
 }
 

@@ -4,7 +4,6 @@ export default Ember.Component.extend({
   startingPosition: 0,
   endingPosition: 5,
   firstFive:function(){
-    console.log('we get here')
     var component = this;
     var reverseModel = [];
     component.get('innerModel').forEach(function(item){

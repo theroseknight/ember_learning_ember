@@ -1,45 +1,62 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  focusModel:function(){
-    console.log(this.get('focusedModel'))
-  }.property('focusedModel'),
-  setMarkers:function(){
-    console.log("here")
+  createMap:function(){
     var component = this;
     var legs = component.get('legs');
 
-    Ember.run.scheduleOnce('afterRender', component, function() {
-      this.insertMap();
-      var map = component.get('map');
-
+    //Create a blank map if creating a new roadtrip with no legs
+    if(legs.get('length')!==0){
+      //Wait to create the map until all necessary information has been loaded
       if(legs.get('firstObject').get('latitude')!==undefined){
-        legs.forEach(function(leg){
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(leg.get('latitude'), leg.get('longitude')),
-            map: map
-          });
+        Ember.run.scheduleOnce('afterRender', component, function() {
+          var container = this.$('.map-canvas')[0];
+          var options = {
+            //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
+            center: new window.google.maps.LatLng(
+              this.get('latitude'),
+              this.get('longitude')
+            ),
+            zoom: 4
+          };
+
+          var map = new google.maps.Map(container, options)
+
+          component.set('map', map);
+          component.createMarkers();
+          component.createPolylines();
         });
-        this.createPolylines();
       }
-    });
+    }else{
+      Ember.run.scheduleOnce('afterRender', component, function() {
+        var container = this.$('.map-canvas')[0];
+        var options = {
+          //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
+          center: new window.google.maps.LatLng(
+            this.get('latitude'),
+            this.get('longitude')
+          ),
+          zoom: 4
+        };
+
+        var map = new google.maps.Map(container, options)
+
+        component.set('map', map);
+        component.sendAction('action','newMap');
+      });
+    }
   }.observes("legs.[]"),
-  insertMap:function(){
-    //jQuery grabs the div on google-map.hbs template
-    var container = this.$('.map-canvas')[0];
-    var options = {
-      //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
-      center: new window.google.maps.LatLng(
-        this.get('latitude'),
-        this.get('longitude')
-      ),
-      zoom: 4
-    };
-    //Create the map in the DOM and save it for use by the markers and polylines functions
-    this.set('map', new google.maps.Map(container, options));
-    //this.setMarkers();
-    //this.createPolylines();
-  }.on('didInsertElement'),
+  createMarkers:function(){
+    var component = this;
+    var legs = component.get('legs');
+    var map = component.get('map')
+    legs.forEach(function(leg){
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(leg.get('latitude'), leg.get('longitude')),
+        map: map
+      });
+    });
+  },
   createPolylines:function(){
     var component = this;
     var map = component.get('map');
@@ -75,12 +92,14 @@ export default Ember.Component.extend({
         origin: pathCoordinates[0],
         destination: pathCoordinates[pathCoordinates.length-1],
         waypoints: waypts,
-        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        travelMode: google.maps.DirectionsTravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.IMPERIAL
       };
 
       service.route(request,function(result, status) {
         if(status === google.maps.DirectionsStatus.OK){
           directionsDisplay.setDirections(result);
+          component.sendAction('action','fullMap',result.routes[0].legs);
         }else{
           alert("Directions request failed:" +status);
         }
@@ -88,8 +107,6 @@ export default Ember.Component.extend({
     }else{
       console.log("No Legs Yet");
     }
-
-
   },
   actions: {
 

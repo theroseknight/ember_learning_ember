@@ -1,0 +1,14 @@
+.stats-displayer-label {
+  text-align: right;
+  font-weight: bold;
+}
+
+.stats-displayer-value {
+  padding-left: 3px;
+}
+
+.stats-displayer-main-label-row > td {
+  text-align:center;
+  font-weight: bold;
+  text-decoration: underline;
+}

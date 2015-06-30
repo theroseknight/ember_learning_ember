@@ -9,6 +9,8 @@ export default Ember.Route.extend({
         method:"POST",
         data:{
           "roadtrip[name]":controller.get("name"),
+          "roadtrip[number_of_days]":controller.get("numberOfDays"),
+          "roadtrip[hours_of_sleep]":controller.get("hoursOfSleep")
         },
         success:function(data){
           $('#newroadtripModal').modal('hide');
