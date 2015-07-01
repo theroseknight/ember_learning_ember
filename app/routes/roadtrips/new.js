@@ -17,10 +17,10 @@ export default Ember.Route.extend({
           controller.store.push("roadtrip",controller.store.normalize("roadtrip",data.roadtrip));
           //Ensures that the new model has finshed pushing to the store and the model slider has been updated so that the user sees his new roadtrip highlighted right after creation
           Ember.run.scheduleOnce('afterRender', route, function() {
-            $('#slider-button-'+data.roadtrip.id).addClass('slider-selected')
-            $('#slider-button-'+data.roadtrip.id).siblings().removeClass('slider-selected')
+            $('#slider-button-'+data.roadtrip.id).addClass('slider-selected');
+            $('#slider-button-'+data.roadtrip.id).siblings().removeClass('slider-selected');
             route.transitionTo('roadtrip', data.roadtrip.id);
-          })
+          });
         },
         error:function(){
           console.log("fail");

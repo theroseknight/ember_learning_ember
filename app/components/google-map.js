@@ -20,7 +20,7 @@ export default Ember.Component.extend({
             zoom: 4
           };
 
-          var map = new google.maps.Map(container, options)
+          var map = new google.maps.Map(container, options);
 
           component.set('map', map);
           component.createMarkers();
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
           zoom: 4
         };
 
-        var map = new google.maps.Map(container, options)
+        var map = new google.maps.Map(container, options);
 
         component.set('map', map);
         component.sendAction('action',{distance:null,timeInMinutes:null});
@@ -49,9 +49,9 @@ export default Ember.Component.extend({
   createMarkers:function(){
     var component = this;
     var legs = component.get('legs');
-    var map = component.get('map')
+    var map = component.get('map');
     legs.forEach(function(leg){
-      var marker = new google.maps.Marker({
+      new google.maps.Marker({
         position: new google.maps.LatLng(leg.get('latitude'), leg.get('longitude')),
         map: map
       });
@@ -68,7 +68,7 @@ export default Ember.Component.extend({
       pathCoordinates.push(coordinate);
     });
 
-    var finalPath = new google.maps.Polyline({
+    new google.maps.Polyline({
       path: pathCoordinates,
       strokeColor: '#FF0000',
       strokeOpacity: 1.0,
@@ -105,17 +105,17 @@ export default Ember.Component.extend({
           var distance=0;
           var timeInMinutes=0;
           params.forEach(function(legObject){
-            var rawDistance = legObject.distance.text
-            var stringNumberDistance = rawDistance.slice(0,-3)
-            var numberDistance = parseInt(stringNumberDistance)
+            var rawDistance = legObject.distance.text;
+            var stringNumberDistance = rawDistance.slice(0,-3);
+            var numberDistance = parseInt(stringNumberDistance);
             distance += numberDistance;
 
-            var rawTime = legObject.duration.value
-            var danglingSeconds = rawTime%60
-            var roundedToNextMinute = rawTime - danglingSeconds + 60
-            var innerTimeInMinutes = roundedToNextMinute / 60
-            timeInMinutes += innerTimeInMinutes
-          })
+            var rawTime = legObject.duration.value;
+            var danglingSeconds = rawTime%60;
+            var roundedToNextMinute = rawTime - danglingSeconds + 60;
+            var innerTimeInMinutes = roundedToNextMinute / 60;
+            timeInMinutes += innerTimeInMinutes;
+          });
 
           component.sendAction('action',{distance:distance,timeInMinutes:timeInMinutes});
         }else{

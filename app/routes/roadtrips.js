@@ -9,8 +9,8 @@ export default Ember.Route.extend({
     focusedModel: function(params) {
       var route = this;
       //Selected model is highlighted and all other models are unhighlighted on each user click
-      $('#slider-button-'+params).addClass('slider-selected')
-      $('#slider-button-'+params).siblings().removeClass('slider-selected')
+      $('#slider-button-'+params).addClass('slider-selected');
+      $('#slider-button-'+params).siblings().removeClass('slider-selected');
       //DIRT SHIT CODE - hacky solution to wanting a unique action bar on the LEG level but needing my outlet to be where that doesn't make sense.  Learn how to implement a better solution
       if(window.location.href!=="http://localhost:4200/"){
         route.controllerFor('roadtrip').set(

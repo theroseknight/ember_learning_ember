@@ -7,7 +7,7 @@ export default Ember.Route.extend({
       var distanceInMiles=params.distance;
       var timeInMinutes=params.timeInMinutes;
 
-      component.modelFor('roadtrip').set('distanceInMiles',distance);
+      component.modelFor('roadtrip').set('distanceInMiles',distanceInMiles);
       component.modelFor('roadtrip').set('timeInMinutes',timeInMinutes);
     }
   }
