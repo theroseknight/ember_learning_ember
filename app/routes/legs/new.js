@@ -7,9 +7,10 @@ export default Ember.Route.extend({
   actions: {
     create:function(){
       var route = this;
-      var controller = this.controllerFor('legs.new');
-      var roadtripController = this.controllerFor('roadtrip');
+      var controller = route.controller;
+      var roadtripController = route.controllerFor('roadtrip');
 
+      //HomeMarker is a flag for the server that indicates whether to create a return trip leg or to update the return trip leg with a new starting city
       var homeMarker = null;
       if(roadtripController.get('model.legs.length')===0){
          homeMarker = true;
@@ -31,28 +32,16 @@ export default Ember.Route.extend({
         },
         success:function(data){
           $('#newLegModal').modal('hide');
-          if(roadtripController.get('model.legs.length')===0){
-            data.legs.forEach(function(item){
-              controller.store.push("leg",controller.store.normalize("leg",item));
-            });
-            route.transitionTo('/roadtrips'+ "/" + roadtripController.get('model.id'));
-          }else{
-            controller.store.push("leg",controller.store.normalize("leg",data.legs[0]));
-            var updatedObject = controller.store.getById('leg',data.legs[1].id);
-            console.log(data.legs[1].id);
-            //updatedObject.set('focused',true)
-            //updatedObject.save().then(function(){
-              route.transitionTo('/roadtrips'+ "/" + roadtripController.get('model.id'));
-            //});
-          }
-
-
+          //First creation creates first leg and return trip leg.  Subsequent creations create new leg and update starting city of return trip to ending city of new leg
+          data.legs.forEach(function(item){
+            controller.store.push("leg",controller.store.normalize("leg",item));
+          });
+          route.transitionTo('roadtrip',roadtripController.get('model.id'));
         },
         error:function(){
           console.log("fail");
         }
       });
-
     },
   }
 });

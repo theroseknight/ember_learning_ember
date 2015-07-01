@@ -24,7 +24,6 @@ app.import('app/styles/roadtrips.css');
 app.import('app/styles/action-bar-component.css');
 app.import('app/styles/model-slider-component.css');
 app.import('app/styles/stats-displayer-component.css');
-app.import('app/styles/-leg-container.css');
 app.import('app/styles/modals.css');
 app.import('app/styles/app.css');
 app.import('vendor/custom-utilities.js');

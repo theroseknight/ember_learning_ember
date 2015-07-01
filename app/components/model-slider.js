@@ -15,17 +15,7 @@ export default Ember.Component.extend({
   actions: {
     sliderButtonFocus: function(params) {
       var component = this;
-      if(component.get('modelId')===undefined){
-        component.sendAction('action',params);
-      }else{
-        var controller = component.get('outerController');
-        var updatedObject = controller.store.getById(component.get('idType'),component.get("modelId"));
-        updatedObject.set('focused',false);
-        updatedObject.save().then(function(){
-          component.sendAction('action',params);
-        });
-      }
-
+      component.sendAction('action',params);
     },
     slideLeft: function() {
       var currentStarting = this.get('startingPosition');

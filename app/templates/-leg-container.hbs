@@ -1,9 +1,0 @@
-{{#if leg.focused}}
-  <button class="leg-button focused-leg" id="leg-button-{{leg.id}}" {{action "focusedLeg" leg.id}}>
-    {{leg.endingCity}}
-  </button>
-{{else}}
-  <button class="leg-button" id="leg-button-{{leg.id}}" {{action "focusedLeg" leg.id}}>
-    {{leg.endingCity}}
-  </button>
-{{/if}}

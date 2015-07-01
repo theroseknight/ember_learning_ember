@@ -2,13 +2,16 @@ import DS from 'ember-data';
 var attr=DS.attr;
 
 export default DS.Model.extend({
+  //Server attributes//
   name: attr(),
   numberOfDays: attr(),
   hoursOfSleep: attr(),
-  savedMap: attr('string', {defaultValue: null}),
   legs:DS.hasMany("leg",{async:true}),
-  focused: attr(),
+  /////////////////////
+
+  //Ember frontend only attributes//////////////////////
   distanceInMiles: attr('number', {defaultValue:null}),
+  timeInMinutes: attr('number',{defaultValue:null}),
   distanceLoaded:function(){
     if(this.get('distanceInMiles')){
       return true
@@ -16,7 +19,6 @@ export default DS.Model.extend({
       return false
     }
   }.property('distanceInMiles'),
-  timeInMinutes: attr('number',{defaultValue:null}),
   timeLoaded:function(){
     if(this.get('timeInMinutes')){
       return true

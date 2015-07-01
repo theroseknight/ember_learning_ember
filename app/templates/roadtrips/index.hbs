@@ -1,14 +1,16 @@
 <div class="row row-header">
-  {{action-bar actionsArray=actionsArray outercontroller=this}}
+  {{action-bar actionsArray=actionsArray}}
 </div>
 <div class="row row-content">
   <div class="col-xs-2 leg-holder" id="left-landing-column">
     {{#each focusModel.legs as |leg|}}
-      {{partial "leg-container"}}
+      <button class="leg-button" id="leg-button-{{leg.id}}" {{action "focusedLeg" leg.id}}>
+        {{leg.endingCity}}
+      </button>
     {{/each}}
   </div>
   <div class="col-xs-8">
-    {{google-map latitude="37.8282" longitude="-98.5795" legs=focusModel.legs}}
+    {{google-map latitude="37.8282" longitude="-98.5795"}}
   </div>
   <div class="col-xs-2" id="right-landing-column">
   </div>
