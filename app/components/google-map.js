@@ -42,7 +42,7 @@ export default Ember.Component.extend({
         var map = new google.maps.Map(container, options)
 
         component.set('map', map);
-        component.sendAction('action','newMap');
+        component.sendAction('action',{distance:null,timeInMinutes:null});
       });
     }
   }.observes("legs.[]"),
@@ -117,7 +117,7 @@ export default Ember.Component.extend({
             timeInMinutes += innerTimeInMinutes
           })
 
-          component.sendAction('action','fullMap',{distance:distance,timeInMinutes:timeInMinutes});
+          component.sendAction('action',{distance:distance,timeInMinutes:timeInMinutes});
         }else{
           alert("Directions request failed:" +status);
         }

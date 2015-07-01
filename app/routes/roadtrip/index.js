@@ -2,20 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions:{
-    googleMapsActions: function(action,params) {
+    googleMapsActions: function(params) {
       var component=this;
-      var distanceInMiles;
-      var timeInMinutes;
-      if(action=="fullMap"){
-        distanceInMiles=params.distance;
-        timeInMinutes=params.timeInMinutes;
-      }else if(action="newMap"){
-        distanceInMiles=null;
-        timeInMinutes=null;
-      }
+      var distanceInMiles=params.distance;
+      var timeInMinutes=params.timeInMinutes;
 
-      component.modelFor('roadtrip').set('distanceInMiles',distance)
-      component.modelFor('roadtrip').set('timeInMinutes',timeInMinutes)
+      component.modelFor('roadtrip').set('distanceInMiles',distance);
+      component.modelFor('roadtrip').set('timeInMinutes',timeInMinutes);
     }
   }
 });
