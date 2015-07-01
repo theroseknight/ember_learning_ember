@@ -13,11 +13,8 @@ export default Ember.Route.extend({
     //Model-Slider Component
     console.log(model.objectAt(model.get('length')-1).get('legs'))
     //controller.set('focusModel',model.objectAt(model.get('length')-1));
-  },  
+  },
   actions:{
-    focusedModel: function(params) {
-      var route = this;
-      route.transitionTo('/roadtrips'+ "/" + params);
-    }
+
   }
 });

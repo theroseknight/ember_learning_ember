@@ -1,19 +1,6 @@
-<div class="row row-header">
-  {{action-bar actionsArray=model.actionsArray transitionDestroy="/" id=model.id outerController=this idType="roadtrip"}}
+<div class="col-xs-8 google-map-holder">
+  {{google-map latitude="37.8282" longitude="-98.5795" legs=model.legs action="googleMapsActions" testMap=model.savedMap}}
 </div>
-<div class="row row-content">
-  <div class="col-xs-2 leg-holder" id="left-landing-column">
-    {{#each model.legs as |leg|}}
-      {{partial "leg-container"}}
-    {{/each}}
-  </div>
-  <div class="col-xs-8 google-map-holder">
-    {{google-map latitude="37.8282" longitude="-98.5795" legs=model.legs action="googleMapsActions" testMap=model.savedMap}}
-  </div>
-  <div class="col-xs-2" id="right-landing-column">
-    {{stats-displayer model=model}}
-  </div>
-</div>
-<div class="row row-footer">
-  {{model-slider innerModel=model.innerModel action="focusedModel" modelId=model.id outerController=this idType="roadtrip"}}
+<div class="col-xs-2" id="right-landing-column">
+  {{stats-displayer model=model}}
 </div>
