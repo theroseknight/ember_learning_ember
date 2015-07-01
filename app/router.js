@@ -12,6 +12,9 @@ export default Router.map(function() {
       this.route("edit");
       this.resource("legs",function(){
         this.route("new");
+        this.resource("leg",{path:'legs/:legId'},function(){
+          this.route('edit');
+        });
       });
     });
   });

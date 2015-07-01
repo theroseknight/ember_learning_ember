@@ -23,6 +23,7 @@ export default Ember.Route.extend({
       var route = this;
       $('#leg-button-'+params).addClass("leg-button-focused");
       $('#leg-button-'+params).siblings().removeClass("leg-button-focused");
+      route.transitionTo('leg',params);
     }
   }
 });
