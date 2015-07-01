@@ -1,8 +1,8 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
-  setupController:function(controller,model){    
+  setupController:function(controller,model){
     this._super(controller,model);
-    //Action-Bar Component
+    //Action-Bar Component - enables a unique set of buttons on the homepage view
     controller.set(
       'actionsArray',
       [
@@ -10,9 +10,6 @@ export default Ember.Route.extend({
         {link:"roadtrips.new", label:"New Roadtrip"}
       ]
     );
-    //Model-Slider Component
-    console.log(model.objectAt(model.get('length')-1).get('legs'))
-    //controller.set('focusModel',model.objectAt(model.get('length')-1));
   },
   actions:{
 

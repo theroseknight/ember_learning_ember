@@ -99,7 +99,25 @@ export default Ember.Component.extend({
       service.route(request,function(result, status) {
         if(status === google.maps.DirectionsStatus.OK){
           directionsDisplay.setDirections(result);
-          component.sendAction('action','fullMap',result.routes[0].legs);
+
+          var params = result.routes[0].legs;
+
+          var distance=0;
+          var timeInMinutes=0;
+          params.forEach(function(legObject){
+            var rawDistance = legObject.distance.text
+            var stringNumberDistance = rawDistance.slice(0,-3)
+            var numberDistance = parseInt(stringNumberDistance)
+            distance += numberDistance;
+
+            var rawTime = legObject.duration.value
+            var danglingSeconds = rawTime%60
+            var roundedToNextMinute = rawTime - danglingSeconds + 60
+            var innerTimeInMinutes = roundedToNextMinute / 60
+            timeInMinutes += innerTimeInMinutes
+          })
+
+          component.sendAction('action','fullMap',{distance:distance,timeInMinutes:timeInMinutes});
         }else{
           alert("Directions request failed:" +status);
         }

@@ -3,7 +3,7 @@ export default Ember.Route.extend({
   actions: {
     create:function(){
       var route = this;
-      var controller = this.controllerFor('roadtrips.new');
+      var controller = route.controller;
       $.ajax({
         url:"http://localhost:3000/roadtrips",
         method:"POST",
@@ -15,7 +15,12 @@ export default Ember.Route.extend({
         success:function(data){
           $('#newroadtripModal').modal('hide');
           controller.store.push("roadtrip",controller.store.normalize("roadtrip",data.roadtrip));
-          route.transitionTo('/roadtrips'+ "/" + data.roadtrip.id);
+          //Ensures that the new model has finshed pushing to the store and the model slider has been updated so that the user sees his new roadtrip highlighted right after creation
+          Ember.run.scheduleOnce('afterRender', route, function() {
+            $('#slider-button-'+data.roadtrip.id).addClass('slider-selected')
+            $('#slider-button-'+data.roadtrip.id).siblings().removeClass('slider-selected')
+            route.transitionTo('roadtrip', data.roadtrip.id);
+          })
         },
         error:function(){
           console.log("fail");

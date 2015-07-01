@@ -7,7 +7,7 @@ export default Ember.Route.extend({
   setupController:function(controller,model){
     var route=this;
     route._super(controller,model);
-    //Action-Bar Component
+    //Action-Bar Component - DIRT SHIT CODE Hacky solution to wanting unique action bar but not understanding how to have two outlets that render sepearate chunks of code from a nested resource.
     route.controllerFor('roadtrip').set(
       'model.actionsArray',
       [
