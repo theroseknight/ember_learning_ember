@@ -5,7 +5,8 @@ export default Ember.Route.extend({
     return this.store.find("roadtrip",params.roadtripId);
   },
   setupController:function(controller,model){
-    this._super(controller,model);
+    var route=this;
+    route._super(controller,model);
     //Action-Bar Component
     controller.set(
       'model.actionsArray',
@@ -17,6 +18,10 @@ export default Ember.Route.extend({
           {link:"legs.new",label:"New Leg"}
         ]
     );
+    //Model-Slider Component - Makes the highlighted model refresh protected by making sure if the user refreshes on this view the current model will remain highlighted
+    Ember.run.scheduleOnce('afterRender', route, function() {
+      $('#slider-button-'+model.get('id')).addClass('slider-selected');
+    });
   },
   actions: {
     focusedLeg: function(params) {

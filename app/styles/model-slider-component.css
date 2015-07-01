@@ -82,7 +82,22 @@
  right: 1.25%;
 }
 
-#slider-button:focus {
+#slider-button-left:focus {
+  border:none;
+  outline:none !important;
+}
+
+#slider-button-left > i:focus {
+  border:none;
+  outline:none !important;
+}
+
+#slider-button-right:focus {
+  border:none;
+  outline:none !important;
+}
+
+#slider-button-right > i:focus {
   border:none;
   outline:none !important;
 }
