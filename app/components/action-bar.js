@@ -15,10 +15,12 @@ export default Ember.Component.extend({
       var component = this;
       var controller = component.get('outerController');
       var deletedObject = controller.store.getById(component.get('idType'),component.get("id"));
-      deletedObject.deleteRecord();
-      deletedObject.save().then(function(){
-        controller.transitionToRoute(component.get('transitionDestroy'));
+      //Schedule the deletion for after the transition otherwise the route will be destroyed and you cant transition off of it
+      Ember.run.scheduleOnce('afterRender', component, function() {
+        deletedObject.deleteRecord();
+        deletedObject.save()
       });
+      component.get('innerRoute').transitionTo('roadtrips')
     }
   }
 });

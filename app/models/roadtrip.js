@@ -6,6 +6,9 @@ export default DS.Model.extend({
   name: attr(),
   numberOfDays: attr(),
   hoursOfSleep: attr(),
+  carYear:attr(),
+  carMake:attr(),
+  carModel:attr(),
   legs:DS.hasMany("leg",{async:true}),
   /////////////////////
 

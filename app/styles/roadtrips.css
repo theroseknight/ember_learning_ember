@@ -95,6 +95,10 @@ html, body, .ember-view, .container{
   color: white;
 }
 
+#right-landing-column > table > tbody > .ember-view > tr {
+  width: 100%;
+}
+
 /****************/
 
 /*****FOOTER*****/

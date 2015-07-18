@@ -1,0 +1,33 @@
+#no-button-functionality {
+  cursor:default;
+}
+
+#no-button-functionality:hover {
+  background-color: white;
+  border-color: #ccc;
+}
+
+#no-button-functionality:focus {
+  background-color: white;
+  border-color: #ccc;
+  outline:none;
+  outline-offset:0px;
+}
+
+#no-button-functionality:active {
+  box-shadow: none;
+}
+
+.component-dropdown-button {
+  width: 100%;
+  -webkit-appearance: none;
+  border: none;
+  border-image: none;
+  background-color: white;
+  text-align: left;
+}
+
+.component-dropdown-button:hover {
+  background-color: #5300A6;
+  color: white;
+}

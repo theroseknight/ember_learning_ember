@@ -1,80 +1,76 @@
-<table>
-  <tbody>
-    {{#if model.distanceLoaded}}
-      <tr class="stats-displayer-main-label-row">
-        <td></td>
-        <td>Miles</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Total:</td>
-        <td class="stats-displayer-value">{{model.distanceInMiles}} miles</td>
-        <td></td>
-      </tr>
-    {{else}}
-      <tr class="stats-displayer-main-label-row">
-        <td></td>
-        <td>Miles</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Total:</td>
-        <td class="stats-displayer-value">Calculating</td>
-        <td></td>
-      </tr>
-    {{/if}}
-    {{#if model.timeLoaded}}
-      <tr class="stats-displayer-main-label-row">
-        <td></td>
-        <td>Time</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Drive:</td>
-        <td class="stats-displayer-value">{{model.drivingTime}}</td>
-        <td class="stats-displayer-percent">{{model.drivingPercent}}</td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Sleep:</td>
-        <td class="stats-displayer-value">{{model.sleepingTime}}</td>
-        <td class="stats-displayer-percent">{{model.sleepingPercent}}</td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Fun:</td>
-        <td class="stats-displayer-value">{{model.timeForFun}}</td>
-        <td class="stats-displayer-percent">{{model.funPercent}}</td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Total:</td>
-        <td class="stats-displayer-value">{{model.timeInHours}} hours</td>
-        <td class="stats-displayer-percent">100.00%</td>
-      </tr>
-    {{else}}
-      <tr class="stats-displayer-main-label-row">
-        <td></td>
-        <td>Time</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Drive:</td>
-        <td class="stats-displayer-value">Calculating</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Sleep:</td>
-        <td class="stats-displayer-value">Calculating</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Fun:</td>
-        <td class="stats-displayer-value">Calculating</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="stats-displayer-label">Total:</td>
-        <td class="stats-displayer-value">{{model.timeInHours}} hours</td>
-        <td class="stats-displayer-percent">100.00%</td>
-      </tr>
-    {{/if}}
-  </tbody>
-</table>
+{{#if model.distanceLoaded}}
+  <tr class="stats-displayer-main-label-row">
+    <td></td>
+    <td>Miles</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Total:</td>
+    <td class="stats-displayer-value">{{model.distanceInMiles}} miles</td>
+    <td></td>
+  </tr>
+{{else}}
+  <tr class="stats-displayer-main-label-row">
+    <td></td>
+    <td>Miles</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Total:</td>
+    <td class="stats-displayer-value">Calculating</td>
+    <td></td>
+  </tr>
+{{/if}}
+{{#if model.timeLoaded}}
+  <tr class="stats-displayer-main-label-row">
+    <td></td>
+    <td>Time</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Drive:</td>
+    <td class="stats-displayer-value">{{model.drivingTime}}</td>
+    <td class="stats-displayer-percent">{{model.drivingPercent}}</td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Sleep:</td>
+    <td class="stats-displayer-value">{{model.sleepingTime}}</td>
+    <td class="stats-displayer-percent">{{model.sleepingPercent}}</td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Fun:</td>
+    <td class="stats-displayer-value">{{model.timeForFun}}</td>
+    <td class="stats-displayer-percent">{{model.funPercent}}</td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Total:</td>
+    <td class="stats-displayer-value">{{model.timeInHours}} hours</td>
+    <td class="stats-displayer-percent">100.00%</td>
+  </tr>
+{{else}}
+  <tr class="stats-displayer-main-label-row">
+    <td></td>
+    <td>Time</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Drive:</td>
+    <td class="stats-displayer-value">Calculating</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Sleep:</td>
+    <td class="stats-displayer-value">Calculating</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Fun:</td>
+    <td class="stats-displayer-value">Calculating</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="stats-displayer-label">Total:</td>
+    <td class="stats-displayer-value">{{model.timeInHours}} hours</td>
+    <td class="stats-displayer-percent">100.00%</td>
+  </tr>
+{{/if}}

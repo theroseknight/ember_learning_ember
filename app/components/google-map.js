@@ -1,6 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  initialBlankMap:function(){
+    var component = this;
+    Ember.run.scheduleOnce('afterRender', component, function() {
+      var container = this.$('.map-canvas')[0];
+      var options = {
+        //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
+        center: new window.google.maps.LatLng(
+          this.get('latitude'),
+          this.get('longitude')
+        ),
+        zoom: 4
+      };
+
+      var map = new google.maps.Map(container, options);
+
+      component.set('map', map);
+      component.sendAction('action',{distance:null,timeInMinutes:null});
+    });
+
+  }.on('init'),
   createMap:function(){
     var component = this;
     var legs = component.get('legs');
@@ -11,6 +31,7 @@ export default Ember.Component.extend({
       if(legs.get('firstObject').get('latitude')!==undefined){
         Ember.run.scheduleOnce('afterRender', component, function() {
           var container = this.$('.map-canvas')[0];
+
           var options = {
             //Default map centers on the middle of the United States when no Polylines exist.  Polylines will recenter the map based on waypoints.
             center: new window.google.maps.LatLng(

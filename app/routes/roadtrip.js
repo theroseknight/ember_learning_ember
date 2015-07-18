@@ -22,6 +22,8 @@ export default Ember.Route.extend({
     Ember.run.scheduleOnce('afterRender', route, function() {
       $('#slider-button-'+model.get('id')).addClass('slider-selected');
     });
+    //Google-Map Component - For refresh on deleted object
+    route.controller.set('model.innerRoute',route)
   },
   actions: {
     focusedLeg: function(params) {
@@ -29,6 +31,12 @@ export default Ember.Route.extend({
       $('#leg-button-'+params).addClass("leg-button-focused");
       $('#leg-button-'+params).siblings().removeClass("leg-button-focused");
       route.transitionTo('leg',params);
+    },
+    actionBarActions: function(action,params){
+      var route = this;
+      if(action==="deleted"){
+        route.transistionTo('/');
+      }
     }
   }
 });

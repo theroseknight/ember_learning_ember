@@ -21,6 +21,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/components-font-awesome/css/font-awesome.css');
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('app/styles/roadtrips.css');
+app.import('app/styles/select-menu-dropdown-component.css')
 app.import('app/styles/action-bar-component.css');
 app.import('app/styles/model-slider-component.css');
 app.import('app/styles/stats-displayer-component.css');
