@@ -17,7 +17,6 @@ export default Ember.Component.extend({
       var distanceInMiles = component.get('model.distanceInMiles')
 
       var milesPerGallon = component.get('model.carMpg')
-      milesPerGallon = 24
 
       var gallonsRequired = distanceInMiles / milesPerGallon;
 
