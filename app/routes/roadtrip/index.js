@@ -12,7 +12,7 @@ export default Ember.Route.extend({
         {link:"roadtrip.edit", label:"Edit Roadtrip"},
         {action:"destroyResource", label:"Delete Roadtrip"},
         {link:"legs.new",label:"New Leg"}
-      ]
+        ]
     );
     //Model-Slider Component - Needed because the model is only a single instance and we need the whole array for our component.
     //controller.set('model.innerModel',this.store.find("roadtrip"));
@@ -30,6 +30,9 @@ export default Ember.Route.extend({
 
       component.modelFor('roadtrip').set('distanceInMiles',distanceInMiles);
       component.modelFor('roadtrip').set('timeInMinutes',timeInMinutes);
+    },
+    testAPI:function(){
+      console.log("hi there mom")
     }
   }
 });

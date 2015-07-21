@@ -42,5 +42,8 @@
   margin-left: 0px !important;
   margin-right: 0px !important;
   background: #9C9CBC;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #5300A6;
 }
 /****************/

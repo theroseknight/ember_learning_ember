@@ -7,9 +7,9 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy:{
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com https://www.fueleconomy.gov http://query.yahooapis.com",
       'font-src': "'self' https://*.gstatic.com",
-      'connect-src': "'self' localhost:3000 https://www.fueleconomy.gov/ws/rest/fuelprices",
+      'connect-src': "'self' localhost:3000 https://www.fueleconomy.gov",
       'img-src': "'self' https://*.googleapis.com https://*.gstatic.com",
       'style-src': "'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com",
       'media-src': "'self'"

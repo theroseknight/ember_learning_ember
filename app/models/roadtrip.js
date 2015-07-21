@@ -9,6 +9,7 @@ export default DS.Model.extend({
   carYear:attr(),
   carMake:attr(),
   carModel:attr(),
+  carMpg:attr(),
   legs:DS.hasMany("leg",{async:true}),
   /////////////////////
 

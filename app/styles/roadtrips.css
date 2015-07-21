@@ -87,6 +87,9 @@ html, body, .ember-view, .container{
 .leg-button:hover {
   width: 100%;
   background: #9C9CBC;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #5300A6;
 }
 
 .leg-button-focused {

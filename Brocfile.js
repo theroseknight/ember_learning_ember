@@ -28,5 +28,6 @@ app.import('app/styles/stats-displayer-component.css');
 app.import('app/styles/modals.css');
 app.import('app/styles/app.css');
 app.import('vendor/custom-utilities.js');
+app.import('vendor/vehicle-info.js');
 app.import('vendor/gmaps.js');
 module.exports = app.toTree();

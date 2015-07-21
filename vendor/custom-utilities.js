@@ -1,19 +1,3 @@
-var makesInformation={
-  "1984":
-    {
-      "car1":["model1","model2","model3"],
-      "car2":["model4","model5","model6"],
-      "car3":["model7","model8","model9"]
-    },
-  "1985":
-    {
-      "car4":["model10","model11","model12"],
-      "car5":["model13","model14","model15"],
-      "car6":["model16","model17","model18"]
-    }
-}
-
-
 var yearsAvailable =
 [
   1984,

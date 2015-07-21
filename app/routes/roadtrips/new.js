@@ -13,6 +13,7 @@ export default Ember.Route.extend({
     create:function(){
       var route = this;
       var controller = route.controller;
+
       $.ajax({
         url:"http://localhost:3000/roadtrips",
         method:"POST",
@@ -20,9 +21,9 @@ export default Ember.Route.extend({
           "roadtrip[name]":controller.get("name"),
           "roadtrip[number_of_days]":controller.get("numberOfDays"),
           "roadtrip[hours_of_sleep]":controller.get("hoursOfSleep"),
-          "roadtrip[car_year]":controller.get('currentYear'),
-          "roadtrip[car_make]":controller.get('currentMake'),
-          "roadtrip[car_model]":controller.get('currentModel')
+          "roadtrip[car_year]":route.get('currentYear'),
+          "roadtrip[car_make]":route.get('currentMake'),
+          "roadtrip[car_model]":route.get('currentModel')
         },
         success:function(data){
           $('#newroadtripModal').modal('hide');
